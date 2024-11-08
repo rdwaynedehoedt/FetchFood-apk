@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "170196542670",
+    "project_id": "fetchfood-cadc8",
+    "storage_bucket": "fetchfood-cadc8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170196542670:android:6ea37f0b42e735c8cc9c9f",
+        "android_client_info": {
+          "package_name": "com.example.fetchfood"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFsLcexapzcUBwlBIl4qf-y7vSyd2BG0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
