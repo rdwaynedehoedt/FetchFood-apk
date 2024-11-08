@@ -48,7 +48,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -72,7 +72,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -205,7 +205,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button5"
+            android:id="@+id/registerTextView"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         // Set OnClickListener for the "Get Started" button
         getStartedButton.setOnClickListener {
             // Navigate to LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
     }
