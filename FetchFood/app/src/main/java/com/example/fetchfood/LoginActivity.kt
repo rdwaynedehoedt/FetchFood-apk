@@ -38,7 +38,9 @@ class LoginActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // Sign in success, navigate to main activity
                             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                            // TODO: Navigate to MainActivity
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish() // Prevent navigating back to login
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -49,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         registerTextView.setOnClickListener {
             // Navigate to SignupActivity
