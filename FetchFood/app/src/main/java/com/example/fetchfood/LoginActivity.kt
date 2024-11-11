@@ -36,11 +36,12 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Sign in success, navigate to main activity
+                            // Sign in success, navigate to DashboardActivity
                             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivity::class.java)
+                            val intent = Intent(this, DashboardActivity::class.java).apply {
+                                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            }
                             startActivity(intent)
-                            finish() // Prevent navigating back to login
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -51,7 +52,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
         }
-
 
         registerTextView.setOnClickListener {
             // Navigate to SignupActivity

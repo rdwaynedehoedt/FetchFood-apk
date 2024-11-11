@@ -35,7 +35,7 @@ class SignupActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // Sign up success, navigate to login activity or main activity
                             Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivity::class.java)
+                            val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                             finish() // Prevent user from returning to signup
                         } else {
