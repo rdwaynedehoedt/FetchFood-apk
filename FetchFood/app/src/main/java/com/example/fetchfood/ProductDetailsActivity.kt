@@ -16,7 +16,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         val productName = intent.getStringExtra("productName")
         val productDescription = intent.getStringExtra("productDescription")
         val productPrice = intent.getIntExtra("productPrice", 0)
-        val productImageURL = intent.getStringExtra("productImageURL")
+        val productImageURL = intent.getStringExtra("productImage") // Fixed key here
 
         // Initialize views
         val titleTxt: TextView = findViewById(R.id.titleTxt)
