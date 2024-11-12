@@ -28,9 +28,10 @@ class DashboardActivity : AppCompatActivity() {
 
         // Setup RecyclerView (e.g. for Category Products)
         viewCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        viewRecommendation.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) // Set up layout for Recommendations
 
-        // Fetch data from Firestore
-        fetchProducts(viewCategory)
+        // Fetch data from Firestore for Recommendations
+        fetchProducts(viewRecommendation)
     }
 
     private fun fetchProducts(recyclerView: RecyclerView) {

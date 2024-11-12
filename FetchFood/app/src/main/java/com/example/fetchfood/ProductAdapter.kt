@@ -14,14 +14,12 @@ class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adap
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Initialize views using findViewById
         private val productName: TextView = itemView.findViewById(R.id.productName)
-        private val productDescription: TextView = itemView.findViewById(R.id.productDescription)
         private val productPrice: TextView = itemView.findViewById(R.id.productPrice)
         private val productImage: ImageView = itemView.findViewById(R.id.productImage)
 
         fun bind(product: Product) {
             // Binding the product's data to the UI
             productName.text = product.name
-            productDescription.text = product.description
             productPrice.text = "$${product.price}"
             // Load image using Picasso
             Picasso.get().load(product.imageURL).into(productImage)
