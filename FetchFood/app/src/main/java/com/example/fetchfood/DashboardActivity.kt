@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.fetchfood.models.Product
 
+
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
