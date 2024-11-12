@@ -149,10 +149,13 @@
             android:layout_marginBottom="8dp">
 
             <LinearLayout
+                android:id="@+id/exploreButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="22dp"
