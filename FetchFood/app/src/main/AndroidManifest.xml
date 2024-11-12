@@ -29,6 +29,7 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".ProductAdapter" />
         <activity android:name=".ExploreActivity" />
+        <activity android:name=".ProductDetailsActivity" />
     </application>
 
 </manifest>

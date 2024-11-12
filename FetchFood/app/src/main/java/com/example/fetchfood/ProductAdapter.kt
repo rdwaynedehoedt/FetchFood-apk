@@ -1,5 +1,6 @@
 package com.example.fetchfood
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,18 @@ class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adap
             productPrice.text = "$${product.price}"
             // Load image using Picasso
             Picasso.get().load(product.imageURL).into(productImage)
+
+            // Set OnClickListener for item click to navigate to ProductDetailActivity
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                // Pass product data to ProductDetailActivity using intent extras
+                intent.putExtra("productName", product.name)
+                intent.putExtra("productPrice", product.price)
+                intent.putExtra("productImage", product.imageURL) // This should match the key used to retrieve it
+                intent.putExtra("productDescription", product.description)
+                context.startActivity(intent)
+            }
         }
     }
 
