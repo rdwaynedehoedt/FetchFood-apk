@@ -51,13 +51,6 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/notificationIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:srcCompat="@drawable/bell_icon" />
-
-                <ImageView
                     android:id="@+id/searchIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,13 +98,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/seeAllCategoriesTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See all"
-                    android:textColor="@color/green"
-                    android:textSize="14sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -226,13 +212,13 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    app:srcCompat="@drawable/btn_3" />
+                    app:srcCompat="@android:drawable/stat_notify_chat" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@string/wishlist"
+                    android:text="News"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
