@@ -45,6 +45,7 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
+
     private fun fetchProducts(recyclerView: RecyclerView) {
         db.collection("products")
             .get()
