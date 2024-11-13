@@ -29,6 +29,7 @@ class DashboardActivity : AppCompatActivity() {
         val viewCategory = findViewById<RecyclerView>(R.id.viewCategory)
         val viewRecommendation = findViewById<RecyclerView>(R.id.viewRecommendation)
         val exploreButton = findViewById<LinearLayout>(R.id.exploreButton)
+        val cartButton = findViewById<LinearLayout>(R.id.cartButton) // Assuming you have a button for the cart
 
         // Setup RecyclerView (e.g. for Category Products)
         viewCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -43,8 +44,14 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, ExploreActivity::class.java)
             startActivity(intent)
         }
-    }
 
+        // Set click listener for Cart button
+        cartButton.setOnClickListener {
+            // Navigate to CartActivity when Cart button is clicked
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun fetchProducts(recyclerView: RecyclerView) {
         db.collection("products")

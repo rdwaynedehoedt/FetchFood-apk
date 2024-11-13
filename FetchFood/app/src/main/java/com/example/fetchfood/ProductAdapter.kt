@@ -14,16 +14,27 @@ class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adap
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Initialize views using findViewById
-        private val productName: TextView = itemView.findViewById(R.id.productName)
-        private val productPrice: TextView = itemView.findViewById(R.id.productPrice)
-        private val productImage: ImageView = itemView.findViewById(R.id.productImage)
+        val productName: TextView = itemView.findViewById(R.id.productName)
+        val productPrice: TextView = itemView.findViewById(R.id.productPrice)
+        val productImage: ImageView = itemView.findViewById(R.id.productImage)
 
         fun bind(product: Product) {
             // Binding the product's data to the UI
             productName.text = product.name
-            productPrice.text = "$${product.price}"
-            // Load image using Picasso
-            Picasso.get().load(product.imageURL).into(productImage)
+            productPrice.text = "Rs. ${product.price}"
+
+
+            if (!product.imageURL.isNullOrEmpty()) {
+                // Load image using Picasso only if URL is valid
+                Picasso.get()
+                    .load(product.imageURL)
+                    .placeholder(R.drawable.placeholder) // Add a placeholder image
+                    .error(R.drawable.error_image) // Add an error image in case the URL is not valid
+                    .into(productImage)
+            } else {
+                // If image URL is empty or null, show an error or placeholder image
+                productImage.setImageResource(R.drawable.error_image)
+            }
 
             // Set OnClickListener for item click to navigate to ProductDetailActivity
             itemView.setOnClickListener {
@@ -32,15 +43,12 @@ class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adap
                 // Pass product data to ProductDetailActivity using intent extras
                 intent.putExtra("productName", product.name)
                 intent.putExtra("productPrice", product.price)
-                intent.putExtra("productImage", product.imageURL) // This should match the key used to retrieve it
+                intent.putExtra("productImage", product.imageURL)
                 intent.putExtra("productDescription", product.description)
                 context.startActivity(intent)
             }
         }
     }
-
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_item, parent, false)
