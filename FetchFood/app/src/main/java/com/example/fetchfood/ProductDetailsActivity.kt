@@ -48,7 +48,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                 imageURL = productImageURL ?: ""
             )
 
-                // Pass the product to the cart activity
+            // Pass the product to the cart activity
             val intent = Intent(this, CartActivity::class.java)
             intent.putExtra("productName", product.name)
             intent.putExtra("productPrice", product.price)
@@ -57,7 +57,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Set OnClickListener for Add to buyButton
+        // Set OnClickListener for Buy Now button to navigate to MyOrders
         buyButton.setOnClickListener {
             val product = Product(
                 name = productName ?: "",
@@ -66,8 +66,8 @@ class ProductDetailsActivity : AppCompatActivity() {
                 imageURL = productImageURL ?: ""
             )
 
-            // Pass the product to the cart activity
-            val intent = Intent(this, CartActivity::class.java)
+            // Pass the product to MyOrders activity
+            val intent = Intent(this, MyOders::class.java)
             intent.putExtra("productName", product.name)
             intent.putExtra("productPrice", product.price)
             intent.putExtra("productImage", product.imageURL)
