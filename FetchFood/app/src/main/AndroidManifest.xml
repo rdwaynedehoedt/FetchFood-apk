@@ -28,6 +28,7 @@
         <activity android:name=".ProductAdapter" />
         <activity android:name=".ExploreActivity" />
         <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".UserActivity" />
     </application>
 
 </manifest>

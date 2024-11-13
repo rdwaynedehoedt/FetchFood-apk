@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.fetchfood.models.Product
 
-
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -29,6 +28,7 @@ class DashboardActivity : AppCompatActivity() {
         val viewRecommendation = findViewById<RecyclerView>(R.id.viewRecommendation)
         val exploreButton = findViewById<LinearLayout>(R.id.exploreButton)
         val cartButton = findViewById<LinearLayout>(R.id.cartButton) // Assuming you have a button for the cart
+        val userButton = findViewById<LinearLayout>(R.id.userButton1) // Find the user button by its ID
 
         // Setup RecyclerView (e.g. for Category Products)
         viewCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -48,6 +48,13 @@ class DashboardActivity : AppCompatActivity() {
         cartButton.setOnClickListener {
             // Navigate to CartActivity when Cart button is clicked
             val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set click listener for User button
+        userButton.setOnClickListener {
+            // Navigate to UserActivity when User button is clicked
+            val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }
     }

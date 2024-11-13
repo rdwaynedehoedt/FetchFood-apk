@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fetchfood.models.Product
 import com.squareup.picasso.Picasso
 
-class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val productList: List<Product>) :
+    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Initialize views using findViewById
@@ -26,8 +27,7 @@ class ProductAdapter(private val productList: List<Product>) : RecyclerView.Adap
 
             if (!product.imageURL.isNullOrEmpty()) {
                 // Load image using Picasso only if URL is valid
-                Picasso.get()
-                    .load(product.imageURL)
+                Picasso.get().load(product.imageURL)
                     .placeholder(R.drawable.placeholder) // Add a placeholder image
                     .error(R.drawable.error_image) // Add an error image in case the URL is not valid
                     .into(productImage)
