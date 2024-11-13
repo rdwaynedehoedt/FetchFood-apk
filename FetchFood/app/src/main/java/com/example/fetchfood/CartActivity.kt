@@ -22,6 +22,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val gson = Gson()
     private val cartKey = "cart_products"
+    private val ordersKey = "orders_products"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,9 +85,15 @@ class CartActivity : AppCompatActivity() {
 
         // Set click listener for Checkout button
         checkoutButton.setOnClickListener {
+            // Save the cart items to order history before checkout
+            saveOrderData(cartProductList)
+
+            // Clear the cart after successful checkout
+            removeAllProducts()
+            viewCart.adapter?.notifyDataSetChanged() // Update cart view
+
+            // Start the MyOrders activity to view the order history
             val intent = Intent(this, MyOders::class.java)
-            val cartJson = gson.toJson(cartProductList)
-            intent.putExtra("cartProducts", cartJson)
             startActivity(intent)
         }
     }
@@ -114,6 +121,24 @@ class CartActivity : AppCompatActivity() {
             cartProductList.clear()
             cartProductList.addAll(savedCartList)
         }
+    }
+
+    // Save order data to SharedPreferences
+    private fun saveOrderData(orderList: List<Product>) {
+        val ordersJson = sharedPreferences.getString(ordersKey, null)
+        val orders: MutableList<Product> = if (ordersJson != null) {
+            val type = object : TypeToken<MutableList<Product>>() {}.type
+            gson.fromJson(ordersJson, type)
+        } else {
+            mutableListOf()
+        }
+        // Add the new order list to existing orders
+        orders.addAll(orderList)
+
+        // Save updated orders to SharedPreferences
+        val editor = sharedPreferences.edit()
+        editor.putString(ordersKey, gson.toJson(orders))
+        editor.apply()
     }
 
     // Calculate subtotal, tax, and total
