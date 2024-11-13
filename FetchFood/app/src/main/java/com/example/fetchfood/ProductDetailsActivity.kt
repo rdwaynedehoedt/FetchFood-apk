@@ -26,6 +26,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         val productImage: ImageView = findViewById(R.id.img)
         val backBtn: ImageView = findViewById(R.id.backBtn)
         val addToCartBtn: ImageView = findViewById(R.id.addToCartBtn)
+        val buyButton: TextView = findViewById(R.id.buyNowBtn)
 
         // Set data to views
         titleTxt.text = productName
@@ -40,6 +41,24 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         // Set OnClickListener for Add to Cart button
         addToCartBtn.setOnClickListener {
+            val product = Product(
+                name = productName ?: "",
+                description = productDescription ?: "",
+                price = productPrice,
+                imageURL = productImageURL ?: ""
+            )
+
+                // Pass the product to the cart activity
+            val intent = Intent(this, CartActivity::class.java)
+            intent.putExtra("productName", product.name)
+            intent.putExtra("productPrice", product.price)
+            intent.putExtra("productImage", product.imageURL)
+            intent.putExtra("productDescription", product.description)
+            startActivity(intent)
+        }
+
+        // Set OnClickListener for Add to buyButton
+        buyButton.setOnClickListener {
             val product = Product(
                 name = productName ?: "",
                 description = productDescription ?: "",
