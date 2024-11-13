@@ -1,6 +1,7 @@
 package com.example.fetchfood
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -34,7 +35,8 @@ class CartActivity : AppCompatActivity() {
         val deliveryTxt = findViewById<TextView>(R.id.deliverytxt)
         val taxTxt = findViewById<TextView>(R.id.taxTxt)
         val totalTxt = findViewById<TextView>(R.id.totalTxt)
-        val removeAllButton = findViewById<Button>(R.id.removeAllButton) // Reference to the Remove All Products button
+        val removeAllButton = findViewById<Button>(R.id.removeAllButton)
+        val checkoutButton = findViewById<Button>(R.id.button2) // Reference to the Checkout button
 
         // Load cart data from SharedPreferences
         loadCartData()
@@ -78,6 +80,14 @@ class CartActivity : AppCompatActivity() {
             removeAllProducts()
             viewCart.adapter?.notifyDataSetChanged() // Notify adapter that the data has changed
             calculateTotals(subtotalTxt, deliveryTxt, taxTxt, totalTxt) // Update totals after removal
+        }
+
+        // Set click listener for Checkout button
+        checkoutButton.setOnClickListener {
+            val intent = Intent(this, MyOders::class.java)
+            val cartJson = gson.toJson(cartProductList)
+            intent.putExtra("cartProducts", cartJson)
+            startActivity(intent)
         }
     }
 
