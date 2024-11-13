@@ -28,7 +28,7 @@
                 app:srcCompat="@drawable/back"
                 tools:ignore="MissingContentDescription" />
 
-            <!-- Product Image -->
+            <!-- com.example.fetchfood.models.Product Image -->
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 tools:srcCompat="@tools:sample/backgrounds/scenic"
                 tools:ignore="MissingContentDescription" />
 
-            <!-- Product Title and Price -->
+            <!-- com.example.fetchfood.models.Product Title and Price -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

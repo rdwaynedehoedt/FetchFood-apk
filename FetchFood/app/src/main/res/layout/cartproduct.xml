@@ -36,4 +36,14 @@
         android:layout_marginTop="2dp"
         android:text="Price"
         android:textSize="12sp" />
+
+    <!-- Remove Button (Compact and centered) -->
+    <ImageView
+        android:id="@+id/removeBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:src="@android:drawable/ic_delete" />
+
 </LinearLayout>

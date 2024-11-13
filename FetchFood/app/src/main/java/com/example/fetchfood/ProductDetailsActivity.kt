@@ -1,10 +1,12 @@
 package com.example.fetchfood
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
+import com.example.fetchfood.models.Product
 
 class ProductDetailsActivity : AppCompatActivity() {
 
@@ -12,11 +14,10 @@ class ProductDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // Get data from intent
         val productName = intent.getStringExtra("productName")
         val productDescription = intent.getStringExtra("productDescription")
         val productPrice = intent.getIntExtra("productPrice", 0)
-        val productImageURL = intent.getStringExtra("productImage") // Fixed key here
+        val productImageURL = intent.getStringExtra("productImage")
 
         // Initialize views
         val titleTxt: TextView = findViewById(R.id.titleTxt)
@@ -24,6 +25,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         val priceTxt: TextView = findViewById(R.id.priceTxt)
         val productImage: ImageView = findViewById(R.id.img)
         val backBtn: ImageView = findViewById(R.id.backBtn)
+        val addToCartBtn: ImageView = findViewById(R.id.addToCartBtn)
 
         // Set data to views
         titleTxt.text = productName
@@ -33,7 +35,25 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         // Set OnClickListener for the back button
         backBtn.setOnClickListener {
-            finish() // Closes the activity and returns to the previous screen
+            finish()
+        }
+
+        // Set OnClickListener for Add to Cart button
+        addToCartBtn.setOnClickListener {
+            val product = Product(
+                name = productName ?: "",
+                description = productDescription ?: "",
+                price = productPrice,
+                imageURL = productImageURL ?: ""
+            )
+
+            // Pass the product to the cart activity
+            val intent = Intent(this, CartActivity::class.java)
+            intent.putExtra("productName", product.name)
+            intent.putExtra("productPrice", product.price)
+            intent.putExtra("productImage", product.imageURL)
+            intent.putExtra("productDescription", product.description)
+            startActivity(intent)
         }
     }
 }

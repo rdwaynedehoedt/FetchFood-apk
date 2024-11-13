@@ -1,45 +1,109 @@
 package com.example.fetchfood
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.LinearSmoothScroller
 import com.example.fetchfood.models.Product
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.squareup.picasso.Picasso
 
 class CartActivity : AppCompatActivity() {
 
-    private val cartProductList = ArrayList<Product>()
+    private val cartProductList = mutableListOf<Product>()
+    private lateinit var sharedPreferences: SharedPreferences
+    private val gson = Gson()
+    private val cartKey = "cart_products"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cart) // Linking XML layout to this Activity
+        setContentView(R.layout.activity_cart)
 
-        // Initialize views
+        sharedPreferences = getSharedPreferences("FetchFoodCart", Context.MODE_PRIVATE)
+
         val backBtn = findViewById<ImageView>(R.id.backBtn)
         val viewCart = findViewById<RecyclerView>(R.id.viewCart)
+        val subtotalTxt = findViewById<TextView>(R.id.totalFeeTxt)
+        val deliveryTxt = findViewById<TextView>(R.id.deliverytxt)
+        val taxTxt = findViewById<TextView>(R.id.taxTxt)
+        val totalTxt = findViewById<TextView>(R.id.totalTxt)
+
+        // Load cart data from SharedPreferences
+        loadCartData()
+
+        // Get the product passed from the ProductDetailsActivity
+        val productName = intent.getStringExtra("productName")
+        val productPrice = intent.getIntExtra("productPrice", 0)
+        val productImage = intent.getStringExtra("productImage")
+        val productDescription = intent.getStringExtra("productDescription")
+
+        // Add product to cart list if data is available
+        if (productName != null && productImage != null && productDescription != null) {
+            val product = Product(
+                name = productName,
+                price = productPrice,
+                imageURL = productImage,
+                description = productDescription
+            )
+            cartProductList.add(product)
+            saveCartData() // Save the updated cart list
+        }
+
+        // Setup RecyclerView with horizontal layout
+        viewCart.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        viewCart.adapter = ProductAdapter(cartProductList)
+
+        // Add snapping behavior to RecyclerView for smooth scrolling
+        val snapHelper: SnapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(viewCart)
+
+        // Calculate and display totals
+        calculateTotals(subtotalTxt, deliveryTxt, taxTxt, totalTxt)
 
         // Set click listener for back button
         backBtn.setOnClickListener {
-            // Finish this activity and go back to the previous screen
             finish()
         }
+    }
 
-        // Setup RecyclerView
-        viewCart.layoutManager = LinearLayoutManager(this)
-        val adapter = ProductAdapter(cartProductList)
-        viewCart.adapter = adapter
+    // Save the cart data to SharedPreferences
+    private fun saveCartData() {
+        val editor = sharedPreferences.edit()
+        val json = gson.toJson(cartProductList)
+        editor.putString(cartKey, json)
+        editor.apply()
+    }
 
-        // Add product from intent to cart
-        val productName = intent.getStringExtra("productName")
-        val productDescription = intent.getStringExtra("productDescription")
-        val productPrice = intent.getIntExtra("productPrice", 0)
-        val productImageURL = intent.getStringExtra("productImage")
-
-        if (productName != null && productDescription != null && productImageURL != null) {
-            val product = Product(productName, productDescription, productPrice, productImageURL)
-            cartProductList.add(product)
-            adapter.notifyDataSetChanged()
+    // Load the cart data from SharedPreferences
+    private fun loadCartData() {
+        val json = sharedPreferences.getString(cartKey, null)
+        if (json != null) {
+            val type = object : TypeToken<MutableList<Product>>() {}.type
+            val savedCartList: MutableList<Product> = gson.fromJson(json, type)
+            cartProductList.clear()
+            cartProductList.addAll(savedCartList)
         }
+    }
+
+    // Calculate subtotal, tax, and total
+    private fun calculateTotals(subtotalTxt: TextView, deliveryTxt: TextView, taxTxt: TextView, totalTxt: TextView) {
+        val subtotal = cartProductList.sumOf { it.price }
+        val deliveryFee = if (subtotal > 0) 0 else 0 // Assuming free delivery for now
+        val tax = (subtotal * 0.1).toInt() // Assuming 10% tax
+        val total = subtotal + deliveryFee + tax
+
+        // Set the calculated values to the respective TextViews
+        subtotalTxt.text = "Rs. $subtotal"
+        deliveryTxt.text = "Rs. $deliveryFee"
+        taxTxt.text = "Rs. $tax"
+        totalTxt.text = "Rs. $total"
     }
 }
