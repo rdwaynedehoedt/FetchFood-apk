@@ -3,6 +3,7 @@ package com.example.fetchfood
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -21,10 +22,10 @@ class UserActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Initialize views
-        val userNameTextView: TextView = findViewById(R.id.userName)
+
         val userEmailTextView: TextView = findViewById(R.id.userEmail)
         val logoutButton: Button = findViewById(R.id.logoutButton)
+        val backButton: ImageView = findViewById(R.id.backBtn)
 
         // Get current user
         val currentUser = auth.currentUser
@@ -35,15 +36,6 @@ class UserActivity : AppCompatActivity() {
             // Fetch user name from Firestore (assuming user data is stored in a "users" collection)
             val userId = currentUser.uid
             db.collection("users").document(userId).get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val userName = document.getString("name")
-                        userNameTextView.text = userName ?: "Unknown User"
-                    }
-                }
-                .addOnFailureListener {
-                    userNameTextView.text = "Failed to load user name"
-                }
         }
 
         // Set logout button click listener
@@ -53,6 +45,11 @@ class UserActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        // Set back button click listener
+        backButton.setOnClickListener {
+            finish() // Close the current activity to return to the previous screen
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.fetchfood
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
-import androidx.recyclerview.widget.LinearSmoothScroller
 import com.example.fetchfood.models.Product
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.squareup.picasso.Picasso
 
 class CartActivity : AppCompatActivity() {
 
@@ -35,6 +34,7 @@ class CartActivity : AppCompatActivity() {
         val deliveryTxt = findViewById<TextView>(R.id.deliverytxt)
         val taxTxt = findViewById<TextView>(R.id.taxTxt)
         val totalTxt = findViewById<TextView>(R.id.totalTxt)
+        val removeAllButton = findViewById<Button>(R.id.removeAllButton) // Reference to the Remove All Products button
 
         // Load cart data from SharedPreferences
         loadCartData()
@@ -72,6 +72,19 @@ class CartActivity : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
+
+        // Set click listener for Remove All Products button
+        removeAllButton.setOnClickListener {
+            removeAllProducts()
+            viewCart.adapter?.notifyDataSetChanged() // Notify adapter that the data has changed
+            calculateTotals(subtotalTxt, deliveryTxt, taxTxt, totalTxt) // Update totals after removal
+        }
+    }
+
+    // Remove all products from the cart
+    private fun removeAllProducts() {
+        cartProductList.clear() // Clear the product list
+        saveCartData() // Save the updated cart list
     }
 
     // Save the cart data to SharedPreferences

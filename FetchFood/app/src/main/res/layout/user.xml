@@ -6,6 +6,17 @@
     android:padding="20dp"
     android:background="#FFFFFF">
 
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_revert"
+        android:layout_gravity="start"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="Back Button" />
+
+
     <!-- User Profile Title -->
     <TextView
         android:id="@+id/userProfileTitle"
@@ -18,23 +29,8 @@
         android:textStyle="bold" />
 
     <!-- User Name Label -->
-    <TextView
-        android:id="@+id/nameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp" />
 
     <!-- User Name Display -->
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginTop="5dp"
-        android:textStyle="bold" />
 
     <!-- User Email Label -->
     <TextView
@@ -64,7 +60,9 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:textColor="#FFFFFF"
-        android:background="@android:color/holo_green_dark"
         android:layout_marginTop="40dp"
-        android:padding="12dp" />
+        android:backgroundTint="#009688"
+        android:padding="12dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
 </LinearLayout>

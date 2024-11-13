@@ -154,6 +154,20 @@
                     app:layout_constraintTop_toBottomOf="@+id/view3" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <Button
+                android:id="@+id/removeAllButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove All Products"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF0000"
+                android:padding="12dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+            />
+
+
+
             <TextView
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
