@@ -1,6 +1,3 @@
-Here’s the final `README.md` file in a single block for easy copy-paste:
-
-```markdown
 # FetchFood 🐶🍖
 
 **FetchFood** is a mobile application designed for dog owners to easily browse, explore, and purchase high-quality dog food and related products. The app provides a seamless shopping experience, personalized product recommendations, and helpful insights on dog nutrition.
@@ -23,7 +20,7 @@ Here’s the final `README.md` file in a single block for easy copy-paste:
 
 ## 🗂 Project Structure
 
-```
+
 FetchFood/
 ├── app/
 │   ├── src/main/
@@ -51,7 +48,7 @@ FetchFood/
 │   │           └── strings.xml
 ├── build.gradle
 └── README.md
-```
+
 
 ## 🚀 Getting Started
 
@@ -136,8 +133,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any questions or feedback, please reach out to:
 
-- **Dwayne De Hoedt**: [Your Email](mailto:youremail@example.com)
-- GitHub: [yourusername](https://github.com/yourusername)
+- **Dwayne De Hoedt**: [Your Email](mailto:dwaynedehoedt@gmail.com)
+- GitHub: [yourusername](https://github.com/rdwaynedehoedt)
 ```
-
-Feel free to replace placeholders like `yourusername` and `youremail@example.com` with your actual GitHub username and email address. This `README.md` is comprehensive and ready to be copied directly into your project.
