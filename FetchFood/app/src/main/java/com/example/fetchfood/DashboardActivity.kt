@@ -24,7 +24,7 @@ class DashboardActivity : AppCompatActivity() {
 
         // Initialize views
         val nestedScrollView = findViewById<NestedScrollView>(R.id.nestedScrollView)
-        val viewCategory = findViewById<RecyclerView>(R.id.viewCategory)
+
         val viewRecommendation = findViewById<RecyclerView>(R.id.viewRecommendation)
         val exploreButton = findViewById<LinearLayout>(R.id.exploreButton)
         val cartButton = findViewById<LinearLayout>(R.id.cartButton)
@@ -32,7 +32,7 @@ class DashboardActivity : AppCompatActivity() {
         val orderButton = findViewById<LinearLayout>(R.id.MyOder)
 
         // Setup RecyclerView (e.g. for Category Products)
-        viewCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         viewRecommendation.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // Fetch data from Firestore for Recommendations
