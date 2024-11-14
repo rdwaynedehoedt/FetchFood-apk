@@ -18,36 +18,7 @@
 - **Design**: Material Design for consistent UI/UX
 - **Tools**: Android Studio, Git, GitHub
 
-## 🗂 Project Structure
 
-
-FetchFood/
-├── app/
-│   ├── src/main/
-│   │   ├── java/com/example/fetchfood/
-│   │   │   ├── activities/
-│   │   │   │   ├── MainActivity.kt
-│   │   │   │   ├── DashboardActivity.kt
-│   │   │   │   ├── ExploreActivity.kt
-│   │   │   │   ├── CartActivity.kt
-│   │   │   │   ├── UserActivity.kt
-│   │   │   │   └── NewsActivity.kt
-│   │   │   ├── models/
-│   │   │   │   └── Product.kt
-│   │   │   ├── adapters/
-│   │   │   │   └── ProductAdapter.kt
-│   │   └── res/
-│   │       ├── layout/
-│   │       │   ├── activity_main.xml
-│   │       │   ├── activity_dashboard.xml
-│   │       │   ├── activity_explore.xml
-│   │       │   ├── activity_cart.xml
-│   │       │   ├── activity_user.xml
-│   │       │   └── news.xml
-│   │       └── values/
-│   │           └── strings.xml
-├── build.gradle
-└── README.md
 
 ## 🚀 Getting Started
 
