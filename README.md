@@ -49,7 +49,6 @@ FetchFood/
 ├── build.gradle
 └── README.md
 
-
 ## 🚀 Getting Started
 
 ### Prerequisites
