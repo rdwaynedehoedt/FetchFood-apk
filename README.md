@@ -32,7 +32,7 @@
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/FetchFood.git
+   git clone https://github.com/rdwaynedehoedt/FetchFood-apk
    cd FetchFood
    ```
 
