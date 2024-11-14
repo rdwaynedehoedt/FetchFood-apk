@@ -7,4 +7,6 @@
     <string name="wishlist">Wishlist</string>
     <string name="cart">Cart</string>
     <string name="explorer">Explorer</string>
+    <string name="back_button">Back</string>
 </resources>
+

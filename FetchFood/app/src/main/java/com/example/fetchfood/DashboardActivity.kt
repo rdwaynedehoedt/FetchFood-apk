@@ -24,42 +24,38 @@ class DashboardActivity : AppCompatActivity() {
 
         // Initialize views
         val nestedScrollView = findViewById<NestedScrollView>(R.id.nestedScrollView)
-
         val viewRecommendation = findViewById<RecyclerView>(R.id.viewRecommendation)
         val exploreButton = findViewById<LinearLayout>(R.id.exploreButton)
         val cartButton = findViewById<LinearLayout>(R.id.cartButton)
         val userButton = findViewById<LinearLayout>(R.id.userButton1)
         val orderButton = findViewById<LinearLayout>(R.id.MyOder)
+        val newsButton = findViewById<LinearLayout>(R.id.news) // Renamed for clarity
 
-        // Setup RecyclerView (e.g. for Category Products)
-
+        // Set up the RecyclerView
         viewRecommendation.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        // Fetch data from Firestore for Recommendations
+        // Fetch data from Firestore
         fetchProducts(viewRecommendation)
 
-        // Set click listener for Explore button
+        // Set click listeners
         exploreButton.setOnClickListener {
-            val intent = Intent(this, ExploreActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ExploreActivity::class.java))
         }
 
-        // Set click listener for Cart button
         cartButton.setOnClickListener {
-            val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CartActivity::class.java))
         }
 
-        // Set click listener for User button
         userButton.setOnClickListener {
-            val intent = Intent(this, UserActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, UserActivity::class.java))
         }
 
-        // Set click listener for Order button
         orderButton.setOnClickListener {
-            val intent = Intent(this, MyOders::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MyOders::class.java))
+        }
+
+        newsButton.setOnClickListener {
+            startActivity(Intent(this, NewsActivity::class.java))
         }
     }
 
@@ -72,8 +68,7 @@ class DashboardActivity : AppCompatActivity() {
                     val product = document.toObject(Product::class.java)
                     productList.add(product)
                 }
-                val adapter = ProductAdapter(productList)
-                recyclerView.adapter = adapter
+                recyclerView.adapter = ProductAdapter(productList)
             }
             .addOnFailureListener { exception ->
                 Log.w("DashboardActivity", "Error getting documents: ", exception)

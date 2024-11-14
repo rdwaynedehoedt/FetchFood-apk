@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".NewsActivity">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_media_previous"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/back_button"
+        android:onClick="finish"
+        android:tint="@color/black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/backButton"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dog Food News"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/subHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Latest Trends in Dog Nutrition"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp" />
+
+            <!-- Article 1 -->
+            <TextView
+                android:id="@+id/newsArticle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Understanding Grain-Free Diets"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/newsContent1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grain-free dog foods have been popular for the last decade. Here's everything you need to know about whether grain-free is the way to go for your pet."
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Article 2 -->
+            <TextView
+                android:id="@+id/newsArticle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Best Dog Foods of 2024"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/newsContent2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reviewing the top-rated dog foods this year, focusing on nutritional value, cost, and pet owner feedback."
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Article 3 -->
+            <TextView
+                android:id="@+id/newsArticle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rise of Organic and Natural Dog Foods"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/newsContent3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The demand for organic and natural dog food reflects a broader trend towards organic products in human food consumption. Organic dog foods are made with ingredients that are certified to be free of synthetic pesticides, fertilizers, and additives."
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Article 4 -->
+            <TextView
+                android:id="@+id/newsArticle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Impact of Diet on Dog Health"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/newsContent4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recent studies have highlighted the significant impact diet can have on a dog's health. Diets rich in fresh meats, vegetables, and whole grains have been shown to improve coat health, energy levels, and overall vitality."
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <!-- Article 5 -->
+            <TextView
+                android:id="@+id/newsArticle5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Debate Over Raw Diets"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/newsContent5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feeding dogs a raw diet is a controversial topic. Proponents argue that raw diets provide natural nutrients in their most bioavailable form. Critics warn of the risks of bacterial contamination and nutritional imbalances."
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

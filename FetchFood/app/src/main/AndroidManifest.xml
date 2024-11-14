@@ -30,6 +30,7 @@
         <activity android:name=".MyOders" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".UserActivity" />
+        <activity android:name=".NewsActivity" />
     </application>
 
 </manifest>

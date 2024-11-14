@@ -7,12 +7,16 @@
     tools:context=".DashboardActivity">
 
     <!-- Scroll View to Make Screen Scrollable -->
+
+    <!-- Bottom Navigation Bar -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,9 +71,9 @@
                     android:id="@+id/bannerImage"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/banner"
-                android:scaleType="centerCrop"
-                app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,8 +81,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/categoriesTextView"
@@ -100,69 +104,69 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:gravity="center">
+                    android:padding="16dp">
 
                     <Button
                         android:id="@+id/buttonDogBeds"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dog Beds"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Dog Beds"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/buttonDogFoods"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dog Foods"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Dog Foods"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/DogMuzzles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dog Muzzles"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Dog Muzzles"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/buttonDogToys"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dog Toys"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Dog Toys"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/buttonSupplements"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Supplements"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Supplements"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/buttonHarnesses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Harnesses for Dogs"
-                        android:textColor="#FFFFFF"
+                        android:layout_margin="8dp"
                         android:background="@drawable/green_button_background"
                         android:padding="10dp"
-                        android:layout_margin="8dp" />
+                        android:text="Harnesses for Dogs"
+                        android:textColor="#FFFFFF" />
 
                     <!-- Add more buttons for other categories similarly -->
                 </LinearLayout>
@@ -173,8 +177,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/recommendationTextView"
@@ -196,7 +200,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -262,6 +265,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/news"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
