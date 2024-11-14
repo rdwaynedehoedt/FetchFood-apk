@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.fetchfood.models.Product
 
+
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
